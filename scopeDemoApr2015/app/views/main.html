@@ -1,0 +1,58 @@
+<div class="jumbotron">
+  <h1>'Allo, 'Allo!</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+    Always a pleasure scaffolding your apps.
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <button type="button"
+          onclick="document.getElementById('demo').innerHTML = Date()">
+    Click me to display Date and Time.</button>
+  <p id="demo"></p>
+  <ul ng-repeat="thing in awesomeThings">
+    <le>
+      <button type="button" ng-click="buttonClicked(thing)">{{thing}}</button>
+    </le>
+  </ul>
+<p>
+  <button type="button" ng-click="getServerTime()">Get Server Time using broadcast</button>
+<p/>
+  <button type="button" ng-click="getServerTimeUsingPromise()">Get Server Time Using Promise</button>
+
+  <p/>
+  <div  ng-if="serverTime">
+  Server Year is {{serverTime.getFullYear()}} month is {{serverTime.getMonth()}} date is {{serverTime.getDate()}}
+  </div>
+
+</p>
+</div>
+
+<div class="row marketing">
+  <h4>HTML5 Boilerplate</h4>
+  <p>
+    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  </p>
+
+  <h4>Angular</h4>
+  <p>
+    AngularJS is a toolset for building the framework most suited to your application development.
+  </p>
+
+  <h4>Karma</h4>
+  <p>Spectacular Test Runner for JavaScript.</p>
+  <div id="ctrl-as-example" ng-controller="AnothercontrollerCtrl as anotherCtrl">
+    <ul>
+      <li ng-repeat="anotherThing in anotherCtrl.anotherAwesomeThings">{{anotherThing}}</li>
+    </ul>
+  </div>
+
+  <inherited-scope-directive></inherited-scope-directive>
+
+  <p>
+    Testing isolated scope
+  <div ng-repeat="thing in awesomeThings">
+  <isolate-scope-directive thing="{{thing}}"></isolate-scope-directive>
+  </div>
+
+  </p>
+</div>

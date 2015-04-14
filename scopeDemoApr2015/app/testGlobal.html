@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>A GLOBAL variable can be accessed from any script or function.</p>
+
+<p id="demo"></p>
+<p>Click "Try it". Wait 3 seconds. The page will alert "Hello".</p>
+<p>Click "Stop" to prevent the first function to execute.</(p>
+<p>(You must click "Stop" before the 3 seconds are up.)</p>
+
+<button onclick="tryIt()">Try it</button>
+ 
+<button onclick="clearTimeout(myVar)">Stop</button>
+
+<script>
+  var carName = "Volvo";
+  myFunction();
+
+  function myFunction() {
+    name2='John Doe'; // this will create a name2 in global scope. // result in reference error on console, if this line is a comment
+    document.getElementById("demo").innerHTML =
+      "I can display " + carName;
+    console.log('myFunction before age is initialized : name2 = ' + name2 + ' age = ' + age);
+//    name2='John Doe';
+    var age=10;
+      // difference between reference error and undefined
+    console.log('myFunction after age is initialized : name2 = ' + name2 + ' age = ' + age);
+    var monthArray=['Jan','Feb','Mar'];
+    for (var index in monthArray) {
+      console.log(monthArray[index]);
+    }
+    console.log('index after the for loop is completed = ' + index);
+  }
+//  console.log('name2 = ' + name2 + ' age = ' + age); // result in reference error on console
+  function tryIt() {
+     myVar = setTimeout(function(){
+         alert('Hello')},3000); // myVar will be in global scope
+  }
+
+</script>
+
+</body>
+</html>
+
+

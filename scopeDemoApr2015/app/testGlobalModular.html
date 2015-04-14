@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>A GLOBAL variable can be accessed from any script or function.</p>
+
+<p id="demo"></p>
+
+<p>Click "Try it". Wait 3 seconds. The page will alert "Hello".</p>
+
+<p>Click "Stop" to prevent the first function to execute.</(p>
+<p>(You must click "Stop" before the 3 seconds are up.)</p>
+
+<button onclick="testGlobalScope.tryIt()">Try it</button>
+ 
+<button onclick="clearTimeout(myVar)">Stop</button>
+
+<script>
+
+    
+    var myVar = null; // It is a good practise to define all the variable in the beginning.
+
+    var testGlobalScope = function () { // avoid polluting global namespace. Use function to create namespace in javascript
+        var _carName = "Volvo"; // This will create _carName in testGlobalScope.
+//    var myVar=null; // It is a good practise to define all the variable in the beginning.
+        var _tmpInt = 123;
+
+        function myFunction() {
+            var _name2 = 'John Doe'; // this will create a name2 in myFunction scope.
+            var _age = 10; // Follow the convention to precede with underscore (_) private variables.
+            document.getElementById("demo").innerHTML =   // document is a global object provided by Javascript engine. http://www.w3schools.com/js/js_htmldom_document.asp
+                    "I can display " + _carName;  // inner functions can always access the private variables defined in outer function. _carName and _myVar
+//      console.log('myFunction: name2 = ' + _name2 + ' age = ' + _age);
+        }
+
+        //console.log('name2 = ' + name2 + ' age = ' + age); // result in reference error on console
+        var tryIt = function () {
+            var _tmpInt = 456;
+            myVar = setTimeout(function () {  // myVar will be in testGlobalScope namespace
+                alert('Hello ' + yesOrNo + ' _tmpInt = ' + _tmpInt); // as a general rule of thumb, if the callback is just few lines of code, it is ok to be anonymous.
+                // On the other hand, when the function gets more complicated, write a function with a name and call it.
+                // Non anonymous function can be easily tested by test scripts/ testing frameworks.
+            }, 3000);
+            var yesOrNo = false;
+        };
+        return {  // If open curly is in the next line then you will see Uncaught SyntaxError: Unexpected token : and the program will not run.
+            myFunction: myFunction,
+            myVar: myVar,
+            tryIt: tryIt
+        }
+    }(); // Declare, define and execute a function immediately.
+
+    testGlobalScope.myFunction();
+</script>
+
+</body>
+</html>
+
+
